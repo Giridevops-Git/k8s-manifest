@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind:	ReplicaSet 
+metadata:
+  name: nigix-rs 
+  labels:
+    app: nginx
+spec:
+  minReadySeconds: 3
+  replicas: 4
+  selector:
+    matchExpressions: 
+      - key: app 
+        operator: In 
+        values: 
+          - nginx
+          - webserver
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app: nginx 
+        ver: "2.23"
+    spec:
+      containers:
+        - image: nginx:1.23
+          name: nginx
+          ports:
+            - containerPort: 80
+              protocol: TCP

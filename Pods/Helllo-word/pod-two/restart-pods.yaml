@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Pod 
+metadata: restart-never
+  name: alpine 
+spec:
+  containers:
+    - image: alpine:3 
+      name: retart-never
+      command: 
+        - sleep
+        -  "5"
+  restartPolicy: Nerver
+--- 
+apiVersion: v1
+kind: Pod 
+metadata: 
+  name: restart-nopolicy
+spec: 
+  containers: 
+    - image: alpine:3
+      name: restart-nopolicy
+      command: 
+        - sleep
+        - "2"
+              
