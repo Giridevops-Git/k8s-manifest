@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1 
+kind: 	DaemonSet 
+metadata:
+  name: myagetds
+spec: 
+  minReadySeconds: 3
+  selector:
+    matchLabels:
+      app: agent
+  template: 
+   metadata:
+     name: myagetds 
+     labels:
+       app: aget 
+       ver: "3.0" 
+   spec:
+     containers:
+       - name: alpine
+         image: alpine:3 
+         command:
+           - sleep 
+           -  1d
+    
